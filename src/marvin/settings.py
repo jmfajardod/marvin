@@ -124,7 +124,9 @@ class AzureOpenAI(MarvinBaseSettings):
 def initial_setup(home: Union[Path, None] = None) -> Path:
     if not home:
         home = Path.home() / ".marvin"
-    home.mkdir(parents=True, exist_ok=True)
+    print(f"HOME directory: {home}")
+    #home.mkdir(parents=True, exist_ok=True)
+    home = Path(os.getenv("MARVIN_HOME", str(home)))
     return home
 
 
