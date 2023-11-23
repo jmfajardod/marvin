@@ -126,7 +126,9 @@ def initial_setup(home: Union[Path, None] = None) -> Path:
         home = Path.home() / ".marvin"
     print(f"HOME directory: {home}")
     #home.mkdir(parents=True, exist_ok=True)
-    home = Path(os.getenv("MARVIN_HOME", str(home)))
+    home = Path(os.getenv("MARVIN_HOME", None))
+    if home:
+        home.mkdir(parents=True, exist_ok=True)
     return home
 
 
